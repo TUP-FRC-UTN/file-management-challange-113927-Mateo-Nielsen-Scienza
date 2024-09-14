@@ -1,0 +1,54 @@
+<div class="file-list-container">
+  <h2>Archivos</h2>
+  
+  <div class="actions-dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Acciones
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#" (click)="onOpenNewFileForm()">Nuevo</a></li>
+      <li><a class="dropdown-item" href="#" (click)="deleteSelected()">Borrar</a></li>
+    </ul>
+  </div>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Dueños</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of folders" [class.folder]="true">
+        <td><input type="checkbox" [checked]="selectedItems.includes(item)" (change)="selectItem(item)"></td>
+        <td>
+          <i class="bi bi-folder"></i>
+          <span class="truncate" [attr.title]="item.name">{{ item.name }}</span>
+        </td>
+        <td>{{ item.creation | date:'mediumDate' }}</td>
+        <td>
+          <div class="owners">
+            <img *ngFor="let owner of item.owners.slice(0, 3)" [src]="owner.avatarUrl" class="owner-avatar" alt="avatar">
+            <span *ngIf="item.owners.length > 3" class="additional-owners">+{{ item.owners.length - 3 }}</span>
+          </div>
+        </td>
+      </tr>
+      <tr *ngFor="let item of filesList" [class.file]="true">
+        <td><input type="checkbox" [checked]="selectedItems.includes(item)" (change)="selectItem(item)"></td>
+        <td>
+          <i class="bi bi-file-earmark"></i>
+          <span class="truncate" [attr.title]="item.name">{{ item.name }}</span>
+        </td>
+        <td>{{ item.creation | date:'mediumDate' }}</td>
+        <td>
+          <div class="owners">
+            <img *ngFor="let owner of item.owners.slice(0, 3)" [src]="owner.avatarUrl" class="owner-avatar" alt="avatar">
+            <span *ngIf="item.owners.length > 3" class="additional-owners">+{{ item.owners.length - 3 }}</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

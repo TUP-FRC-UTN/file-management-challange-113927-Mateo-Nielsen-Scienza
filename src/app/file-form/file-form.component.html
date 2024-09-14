@@ -1,0 +1,33 @@
+<div *ngIf="showForm" class="form-container">
+  <h2>Añadir Nuevo Archivo o Carpeta</h2>
+  
+  <form (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input id="name" type="text" [(ngModel)]="form.controls['name'].value" name="name" class="form-control" placeholder="Nombre">
+    </div>
+
+    <div class="form-group">
+      <label for="type">Tipo</label>
+      <select id="type" [(ngModel)]="form.controls['type'].value" name="type" class="form-control">
+        <option value="folder">Carpeta</option>
+        <option value="file">Archivo</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="date">Fecha de creación</label>
+      <input id="date" type="date" [(ngModel)]="form.controls['date'].value" name="date" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="owners">Dueños</label>
+      <select id="owners" [(ngModel)]="form.controls['owner'].value" name="owner" class="form-control">
+        <option *ngFor="let owner of owners" [ngValue]="owner">{{ owner.name }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-secondary" (click)="closeForm()">Cancelar</button>
+  </form>
+</div>

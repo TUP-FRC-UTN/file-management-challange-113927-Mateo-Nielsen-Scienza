@@ -1,1 +1,4 @@
-add code here!!
+<h1>Gestión de Archivos</h1>
+<app-file-form [folders]="folders" [owners]="owners" (saveFile)="addFile($event)"></app-file-form>
+<hr>
+<app-file-list [files]="currentFiles" (deleteFiles)="deleteFiles($event)" (navigateToFolder)="navigateFolder($event)"></app-file-list>

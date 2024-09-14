@@ -1,0 +1,24 @@
+.truncate {
+  display: inline-block;
+  max-width: 150px; /* Adjust as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.owner-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 2px;
+}
+
+.additional-owners {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ccc;
+  text-align: center;
+  line-height: 20px;
+}
